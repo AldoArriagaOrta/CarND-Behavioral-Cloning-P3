@@ -58,11 +58,11 @@ The model includes RELU layers to introduce nonlinearity (code line 73, 76, 79),
 
 The model contains dropout layers in order to reduce overfitting (model.py lines 72, 75, 78). 
 
-The model was trained and validated on different data sets (model.py line 24) to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated (model.py line 87) on different data sets (model.py line 24) to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 86).
 
 #### 4. Appropriate training data
 
@@ -88,9 +88,10 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The final model architecture (model.py lines 68-84) consisted of a convolution neural network with the following layers and layer sizes
 
+```sh
 model = Sequential()
-model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3))) #Image Normalization
-model.add(Cropping2D(cropping=((55,20), (0,0)))) # Trimming input images
+model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
+model.add(Cropping2D(cropping=((55,20), (0,0))))
 model.add(Convolution2D(24,5,5, subsample=(2,2)))
 model.add(Dropout(0.5))
 model.add(Activation('relu'))
@@ -105,6 +106,7 @@ model.add(Dense(100))
 model.add(Dense(50))
 model.add(Dense(10))
 model.add(Dense(1))
+```
 
 #### 3. Creation of the Training Set & Training Process
 
